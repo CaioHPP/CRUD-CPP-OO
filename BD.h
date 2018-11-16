@@ -15,13 +15,15 @@ class Busca{
 	int verificaTipo(string tipo);
 	void ImprimeDados(string line, int xCaminho);
 	void mostraResultados(int i);
-	void buscaGeral(string caminho, string valorAtributo, string tipo);
+	bool buscaGeral(string caminho, string valorAtributo, string tipo);
 public:
 	int verificaCaminho(string caminho);
 
-	void buscaFisica(string valorAtributo);
-	void buscaAluno(string valorAtributo);
-	void buscaJuridica(string valorAtributo);
+	string buscaLinha(string caminho, string valorAtributo, string tipo);
+
+	bool buscaFisica(string valorAtributo);
+	bool buscaAluno(string valorAtributo);
+	bool buscaJuridica(string valorAtributo);
 
 	void buscaNomeF(string valorAtributo);
 	void buscaNomeA(string valorAtributo);
@@ -54,20 +56,22 @@ public:
 class BDFisica {
 public:
 	bool guardar(Fisica fisica);
-	
 	bool mostrar();
+	bool apagarLinha(string linha);
 };
 
 class BDJuridica {
 public:
 	bool guardar(Juridica juridica);
 	bool mostrar();
+	bool apagarLinha(string linha);
 };
 
 class BDAluno {
 public:
 	bool guardar(Aluno aluno);
 	bool mostrar();
+	bool apagarLinha(string linha);
 };
 
 #endif

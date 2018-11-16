@@ -3,5 +3,4 @@
 2;cpfdoAle;45;45
 3;Caio;cpfdocaio2;56
 4;Caio;cpfdocaio3;20
-5;Caio;cpfdocaio4;44
 6;erick;cpfdoerick;12

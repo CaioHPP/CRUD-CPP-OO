@@ -138,13 +138,109 @@ void GUI::showAll(){
 
 
 }
+/*
+void GUI::Alterar(){
+
+}
+
+*/
+
+void GUI::menuRemocaoF(string valorAtributo){
+	BDFisica bd;
+	cout << "\n==========================\n";
+	cout << "Para: \n\t remover cadastro - r \n\t alterar cadastro - u \n\t voltar ao menu - x";
+	cout << "\n==========================\n";
+	string linha = menuAchaLinha(valorAtributo, "fisica");
+
+	switch(obtemEscolha()){
+		case 'r':{
+			bd.apagarLinha(linha);
+			break;
+		}
+		case 'u':{
+			break;
+		}
+		case 'x':{
+			break;
+			
+		}
+	}
+}
+
+void GUI::menuRemocaoJ(string valorAtributo){
+	BDJuridica bd;
+	cout << "\n==========================\n";
+	cout << "Para: \n\t remover cadastro - r \n\t alterar cadastro - u \n\t voltar ao menu - x";
+	cout << "\n==========================\n";
+	string linha = menuAchaLinha(valorAtributo,"juridica");
+
+	switch(obtemEscolha()){
+		case 'r':{
+			bd.apagarLinha(linha);
+			break;
+		}
+		case 'u':{
+			break;
+		}
+		case 'x':{
+			break;
+			
+		}
+	}
+}
+
+void GUI::menuRemocaoA(string valorAtributo){
+	BDAluno bd;
+	cout << "\n==========================\n";
+	cout << "Para: \n\t remover cadastro - r \n\t alterar cadastro - u \n\t voltar ao menu - x";
+	cout << "\n==========================\n";
+	string linha = menuAchaLinha(valorAtributo, "aluno");
+
+	switch(obtemEscolha()){
+		case 'r':{
+			bd.apagarLinha(linha);
+			break;
+		}
+		case 'u':{
+			break;
+		}
+		case 'x':{
+			break;
+			
+		}
+	}
+}
+
+
+
+string GUI::menuAchaLinha(string valorAtributo, string tipo){
+	Busca busca;
+	string caminho;
+	if(tipo == "fisica"){
+		caminho = "Banco de Dados\\fisica.txt";
+	}
+	else if(tipo == "juridica"){
+		caminho = "Banco de Dados\\juridica.txt";
+	}
+	else{
+		caminho = "Banco de Dados\\aluno.txt";
+	}
+
+	string linha = busca.buscaLinha(caminho, valorAtributo, "unico");
+
+	return linha;
+}
 
 void GUI::buscaF(){
 	Busca busca;
 	cout << "Deseja buscar atraves do nome(n) ou cpf(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			busca.buscaFisica(obtemValorAtributoString("CPF"));
+			string valorAtributo = obtemValorAtributoString("CPF");
+			bool x = busca.buscaFisica(valorAtributo);//deletar - alterar - voltar ao menu
+			if (x==true){
+				menuRemocaoF(valorAtributo);
+			}
 			break;
 		}
 		case 'n':{
@@ -164,7 +260,11 @@ void GUI::buscaJ(){
 	cout << "Deseja buscar atraves do nome(n) ou CNPJ(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			busca.buscaJuridica(obtemValorAtributoString("CNPJ"));
+			string valorAtributo = obtemValorAtributoString("CNPJ");
+			bool x = busca.buscaJuridica(valorAtributo);
+			if (x==true){
+				menuRemocaoJ(valorAtributo);
+			}
 			break;
 		}
 		case 'n':{
@@ -183,7 +283,11 @@ void GUI::buscaA(){
 	cout << "Deseja buscar atraves do nome(n) ou cpf(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			busca.buscaAluno(obtemValorAtributoString("CPF"));
+			string valorAtributo = obtemValorAtributoString("CPF");
+			bool x = busca.buscaAluno(valorAtributo);//deletar - alterar - voltar ao menu
+			if (x==true){
+				menuRemocaoA(valorAtributo);
+			} 
 			break;
 		}
 		case 'n':{
@@ -215,7 +319,7 @@ void GUI::showBuscas(){
 		}
 		case 'a':
 		{
-			buscaF();
+			buscaA();
 			break;
 		}
 		case 't':

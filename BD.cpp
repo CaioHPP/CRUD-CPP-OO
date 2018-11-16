@@ -4,6 +4,7 @@
 #include <fstream>
 #include <string>
 #include <string.h>
+#include <stdio.h>
 
 
 #include "BD.h"
@@ -100,7 +101,7 @@ int Busca::verificaCaminho(string caminho){
   else if(caminho == "Banco de Dados\\juridica.txt"){
     return 3;
   }
-  else if(caminho == "Banco de Dados\\aluno.txt"){
+  else {
     return 6;
   }
 }
@@ -127,7 +128,7 @@ void Busca::ImprimeDados(string line, int xCaminho){
   }
 }
 
-void Busca::buscaGeral(string caminho, string valorAtributo, string tipo){
+bool Busca::buscaGeral(string caminho, string valorAtributo, string tipo){
   string line;
   ifstream arquivo (caminho.c_str());
   int xCaminho = verificaCaminho(caminho);
@@ -145,26 +146,58 @@ void Busca::buscaGeral(string caminho, string valorAtributo, string tipo){
     }
     mostraResultados(i);
     arquivo.close();
+    if(i>0){
+      return true;
+    }else{
+      return false;
+    }
   }
-  else cout << ""; 
+  else {
+    cout << ""; 
+    return false;
+  }
 
+}
 
+string Busca::buscaLinha(string caminho, string valorAtributo, string tipo){
+ string line ="";
+ ifstream arquivo (caminho.c_str());
+ int xCaminho = verificaCaminho(caminho);
+ int tipoBusca = verificaTipo(tipo);
+ if (arquivo.is_open()){
+  int i = 0;
+  SeparaString linha;
+  string linhasplitada[xCaminho];
+  while ( getline (arquivo,line) ){
+    linha.splitter(line, linhasplitada);
+    if(linhasplitada[tipoBusca] == valorAtributo){
+      return line;
+
+    }  
+  }
+
+  arquivo.close();
+}
+else cout << ""; 
+
+return "";
 }
 
 
 
-void Busca::buscaFisica(string valorAtributo){
-  buscaGeral("Banco de Dados\\fisica.txt", valorAtributo, "unico");
-
+bool Busca::buscaFisica(string valorAtributo){
+  bool x = buscaGeral("Banco de Dados\\fisica.txt", valorAtributo, "unico");
+  return x;
 }
 
-void Busca::buscaAluno(string valorAtributo){
-  buscaGeral("Banco de Dados\\aluno.txt", valorAtributo, "unico");
+bool Busca::buscaAluno(string valorAtributo){
+  bool x = buscaGeral("Banco de Dados\\aluno.txt", valorAtributo, "unico");
+  return x;
 }
 
-void Busca::buscaJuridica(string valorAtributo){
-  buscaGeral("Banco de Dados\\juridica.txt", valorAtributo, "unico");
-
+bool Busca::buscaJuridica(string valorAtributo){
+  bool x = buscaGeral("Banco de Dados\\juridica.txt", valorAtributo, "unico");
+  return x;
 }
 
 void Busca::buscaNomeF(string valorAtributo){
@@ -234,6 +267,32 @@ bool BDFisica::mostrar(){
 else cout << "Unable to open file\n"; 
 return true;
 }
+bool BDFisica::apagarLinha(string linha){
+  string line;
+  ofstream temporario;
+  temporario.open("Banco de Dados\\temp.txt", ios::app);
+  ifstream arquivo("Banco de Dados\\fisica.txt");
+  if(arquivo.is_open()){
+    while(getline(arquivo,line)){
+      if(line != linha){
+        temporario<<line<<endl;
+      }
+    }
+    arquivo.close();
+  }
+  temporario.close();
+  remove("Banco de Dados\\fisica.txt");
+
+  if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\fisica.txt") != 0){
+    perror("Erro ao apagar ficheiro");
+  }
+  else{
+    cout << "Ficheiro Apagado com sucesso\n";
+  }
+  return true;
+}
+
+
 
 
 bool BDJuridica::guardar(Juridica juridica){
@@ -260,6 +319,34 @@ else cout << "Unable to open file\n";
 return true;
 }
 
+bool BDJuridica::apagarLinha(string linha){
+  string line;
+  ofstream temporario;
+  temporario.open("Banco de Dados\\temp.txt", ios::app);
+  ifstream arquivo("Banco de Dados\\juridica.txt");
+  if(arquivo.is_open()){
+    while(getline(arquivo,line)){
+      if(line != linha){
+        temporario<<line<<endl;
+      }
+    }
+    arquivo.close();
+  }
+  temporario.close();
+  ; 
+  remove("Banco de Dados\\juridica.txt");
+
+  if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\juridica.txt")!= 0){
+    perror("Erro ao apagar ficheiro");
+  }
+  else{
+    cout << "Ficheiro Apagado com sucesso\n";
+  }
+  return true;
+}
+
+
+
 
 bool BDAluno::guardar(Aluno aluno){
  ofstream arquivo;
@@ -284,3 +371,33 @@ bool BDAluno::mostrar(){
 else cout << "Unable to open file\n"; 
 return true;
 }
+
+bool BDAluno::apagarLinha(string linha){
+  string line;
+  ofstream temporario;
+  temporario.open("Banco de Dados\\temp.txt", ios::app);
+  ifstream arquivo("Banco de Dados\\aluno.txt");
+  if(arquivo.is_open()){
+    while(getline(arquivo,line)){
+      if(line != linha){
+        temporario<<line<<endl;
+      }
+    }
+    arquivo.close();
+  }
+  temporario.close();
+  
+  remove("Banco de Dados\\aluno.txt");
+
+  if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\aluno.txt")!= 0){
+    perror("Erro ao apagar ficheiro");
+  }
+  else{
+    cout << "Ficheiro Apagado com sucesso\n";
+  }
+  return true;
+}
+
+
+
+

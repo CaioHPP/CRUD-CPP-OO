@@ -20,6 +20,11 @@ private:
 	void buscaA();
 	int MenorId(string pessoa, int j);
 
+	void menuRemocaoF(string valorAtributo);
+	void menuRemocaoJ(string valorAtributo);
+	void menuRemocaoA(string valorAtributo);
+
+	string menuAchaLinha(string valorAtributo, string tipo);
 public: 
 	GUI();
 	void menu();
