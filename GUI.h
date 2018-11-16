@@ -14,9 +14,11 @@ private:
 	void mostraNomeAtributoParaColetar(string nomeAtributo);
 	string obtemValorAtributoString(string nomeAtributo);
 	int obtemValorAtributoInt(string nomeAtributo);
+	string VerificaDado(int pos ,string valorAtributo, string pessoa);
 	void buscaF();
 	void buscaJ();
 	void buscaA();
+	int MenorId(string pessoa, int j);
 
 public: 
 	GUI();

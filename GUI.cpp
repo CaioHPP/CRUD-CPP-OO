@@ -41,13 +41,60 @@ char GUI::obtemEscolha(){
 
 }
 
+string GUI::VerificaDado(int pos ,string valorAtributo, string pessoa){
+	VerificacaoRepeticao ver;
+	string caminho;
+	bool x;
+	if(pessoa == "fisica"){
+		caminho = "Banco de Dados\\fisica.txt";
+	}
+	else if(pessoa == "juridica"){
+		caminho = "Banco de Dados\\juridica.txt";
+	}
+	else{
+		caminho = "Banco de Dados\\aluno.txt";
+	}
+	x = ver.VerificaRepeticao(caminho, valorAtributo, pos);
+	if(x == true){
+		return valorAtributo;
+	}else{
+
+		return VerificaDado(pos, obtemValorAtributoString("Dado existente, insira outro"), pessoa);
+	}
+}
+
+int GUI::MenorId(string pessoa, int j){
+	int i = j;
+	VerificacaoRepeticao ver;
+	string caminho;
+	bool x;
+	if(pessoa == "fisica"){
+		caminho = "Banco de Dados\\fisica.txt";
+	}
+	else if(pessoa == "juridica"){
+		caminho = "Banco de Dados\\juridica.txt";
+	}
+	else{
+		caminho = "Banco de Dados\\aluno.txt";
+	}
+	x = ver.VerificaRepeticao(caminho, to_string(i), 0);
+	if(x == true){
+		return i;
+	}else{
+
+		return MenorId(pessoa, i+1);
+	}
+
+
+}
+
 void GUI::cadF(){
 	Fisica f1;
 
-
+	f1.setId(MenorId("fisica", 0));
 	f1.setNome(obtemValorAtributoString("Nome completo"));
 	f1.setIdade(obtemValorAtributoInt("Idade"));
-	f1.setCpf(obtemValorAtributoString("Cpf"));
+	f1.setCpf(VerificaDado(2, obtemValorAtributoString("Cpf"), "fisica"));
 	BDFisica obj;
 	obj.guardar(f1);
 
@@ -55,9 +102,9 @@ void GUI::cadF(){
 void GUI::cadJ(){
 	Juridica j1;
 
-
+	j1.setId(MenorId("juridica", 0));
 	j1.setNome(obtemValorAtributoString("Nome"));
-	j1.setCnpj(obtemValorAtributoString("Cnpj"));
+	j1.setCnpj(VerificaDado(2, obtemValorAtributoString("Cnpj"), "juridica"));
 
 
 	BDJuridica obj;
@@ -69,10 +116,10 @@ void GUI::cadJ(){
 void GUI::cadA(){
 	Aluno a1;
 
-
+	a1.setId(MenorId("aluno", 0));
 	a1.setNome(obtemValorAtributoString("Nome completo"));
 	a1.setIdade(obtemValorAtributoInt("Idade"));
-	a1.setCpf(obtemValorAtributoString("Cpf"));
+	a1.setCpf(VerificaDado(2, obtemValorAtributoString("Cpf"), "aluno"));
 	a1.setFaculdade(obtemValorAtributoString("Faculdade"));
 	a1.setCurso(obtemValorAtributoString("Curso"));
 

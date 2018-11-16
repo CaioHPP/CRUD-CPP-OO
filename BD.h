@@ -11,12 +11,14 @@ using namespace std;
 
 
 class Busca{
-	int verificaCaminho(string caminho);
+	
 	int verificaTipo(string tipo);
 	void ImprimeDados(string line, int xCaminho);
 	void mostraResultados(int i);
 	void buscaGeral(string caminho, string valorAtributo, string tipo);
 public:
+	int verificaCaminho(string caminho);
+
 	void buscaFisica(string valorAtributo);
 	void buscaAluno(string valorAtributo);
 	void buscaJuridica(string valorAtributo);
@@ -24,10 +26,12 @@ public:
 	void buscaNomeF(string valorAtributo);
 	void buscaNomeA(string valorAtributo);
 	void buscaNomeJ(string valorAtributo);
+};
 
-
-
-
+class VerificacaoRepeticao{
+	int buscaPeloElemento(string caminho, string valorAtributo, int pos);
+public:
+	bool VerificaRepeticao(string caminho, string valorAtributo, int pos);
 };
 
 

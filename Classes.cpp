@@ -2,6 +2,7 @@
 #include <string>
 #include <sstream>
 #include"Classes.h"
+#include "BD.h"
 
 using namespace std;
 
@@ -14,6 +15,8 @@ Aluno::Aluno(){};
 
 
 Pessoa::Pessoa(int id){ this->id = id;}
+
+void Pessoa::setId(int id){this->id = id;}
 
 int Pessoa::getId(){ return id;}
 

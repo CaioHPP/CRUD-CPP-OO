@@ -18,6 +18,7 @@ public:
   Pessoa(int id);
   Pessoa();
   int getId();
+  void setId(int id);
 
   string getNome();
   void setNome(string nome);
