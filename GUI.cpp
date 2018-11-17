@@ -9,7 +9,7 @@ GUI::GUI(){};
 
 
 void GUI::mostraNomeAtributoParaColetar(string nomeAtributo){
-	cout << "==================================" << endl;
+	cout << "\n==================================" << endl;
 	cout << "|" << nomeAtributo << ": " << "|";
 }
 string GUI::obtemValorAtributoString(string nomeAtributo){
@@ -138,12 +138,145 @@ void GUI::showAll(){
 
 
 }
-/*
-void GUI::Alterar(){
+
+void GUI::menuAlterarF(string linha){
+	SeparaString split;
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\t";
+	string linhasplitada[4];
+	split.splitter(linha, linhasplitada);
+	Fisica f1;
+	BDFisica obj;
+	switch(obtemValorAtributoInt("Escolha a opcao")){
+		case 1:{
+			f1.setId(stoi(linhasplitada[0]));
+			f1.setNome(obtemValorAtributoString("Novo Nome"));
+			f1.setIdade(stoi(linhasplitada[3]));
+			f1.setCpf(linhasplitada[2]);
+			obj.apagarLinha(linha);
+			obj.guardar(f1);
+			break;
+		}
+		case 2:{
+			f1.setId(stoi(linhasplitada[0]));
+			f1.setNome(linhasplitada[1]);
+			f1.setIdade(stoi(linhasplitada[3]));
+			f1.setCpf(VerificaDado(2, obtemValorAtributoString("Novo Cpf"), "fisica"));
+			obj.apagarLinha(linha);
+			obj.guardar(f1);
+			break;
+		}
+		case 3:{
+			f1.setId(stoi(linhasplitada[0]));
+			f1.setNome(linhasplitada[1]);
+			f1.setIdade(obtemValorAtributoInt("Nova Idade"));
+			f1.setCpf(linhasplitada[2]);
+			obj.apagarLinha(linha);
+			obj.guardar(f1);
+			break;
+		}
+	}
 
 }
 
-*/
+void GUI::menuAlterarJ(string linha){
+	SeparaString split;
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CNPJ\n\t";
+	string linhasplitada[3];
+	split.splitter(linha, linhasplitada);
+	Juridica j1;
+	BDJuridica obj;
+	switch(obtemValorAtributoInt("Escolha a opcao")){
+		case 1:{
+			j1.setId(stoi(linhasplitada[0]));
+			j1.setNome(obtemValorAtributoString("Novo Nome"));
+			j1.setCnpj(linhasplitada[2]);
+			obj.apagarLinha(linha);
+			obj.guardar(j1);
+			break;
+		}
+		case 2:{
+			j1.setId(stoi(linhasplitada[0]));
+			j1.setNome(linhasplitada[1]);
+			j1.setCnpj(VerificaDado(2, obtemValorAtributoString("Novo CNPJ"), "juridica"));
+			obj.apagarLinha(linha);
+			obj.guardar(j1);
+			break;
+		}
+		
+	}
+
+}
+
+void GUI::menuAlterarA(string linha){
+	SeparaString split;
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\t4.Curso\n\t5.Faculdade";
+	string linhasplitada[6];
+	split.splitter(linha, linhasplitada);
+	Aluno a1;
+	BDAluno obj;
+	switch(obtemValorAtributoInt("Escolha a opcao")){
+		case 1:{
+			a1.setId(stoi(linhasplitada[0]));
+			a1.setNome(obtemValorAtributoString("Novo Nome"));
+			a1.setIdade(stoi(linhasplitada[3]));
+			a1.setCpf(linhasplitada[2]);
+			a1.setFaculdade(linhasplitada[5]);
+			a1.setCurso(linhasplitada[4]);
+			obj.apagarLinha(linha);
+			obj.guardar(a1);
+			break;
+		}
+		case 2:{
+			a1.setId(stoi(linhasplitada[0]));
+			a1.setNome(linhasplitada[1]);
+			a1.setIdade(stoi(linhasplitada[3]));
+			a1.setCpf(VerificaDado(2, obtemValorAtributoString("Novo Cpf"), "aluno"));
+			a1.setFaculdade(linhasplitada[5]);
+			a1.setCurso(linhasplitada[4]);
+			obj.apagarLinha(linha);
+			obj.guardar(a1);
+			break;
+		}
+		case 3:{
+			a1.setId(stoi(linhasplitada[0]));
+			a1.setNome(linhasplitada[1]);
+			a1.setIdade(obtemValorAtributoInt("Nova Idade"));
+			a1.setCpf(linhasplitada[2]);
+			a1.setFaculdade(linhasplitada[5]);
+			a1.setCurso(linhasplitada[4]);
+			obj.apagarLinha(linha);
+			obj.guardar(a1);
+			break;
+		}
+		case 4:{
+			a1.setId(stoi(linhasplitada[0]));
+			a1.setNome(linhasplitada[1]);
+			a1.setIdade(stoi(linhasplitada[3]));
+			a1.setCpf(linhasplitada[2]);
+			a1.setCurso(obtemValorAtributoString("Nova Curso"));
+			
+			a1.setFaculdade(linhasplitada[5]);
+			obj.apagarLinha(linha);
+			obj.guardar(a1);
+			break;
+		}
+		case 5:{
+			a1.setId(stoi(linhasplitada[0]));
+			a1.setNome(linhasplitada[1]);
+			a1.setIdade(stoi(linhasplitada[3]));
+			a1.setCpf(linhasplitada[2]);
+			a1.setCurso(linhasplitada[4]);
+			a1.setFaculdade(obtemValorAtributoString("Nova Faculdade"));
+			obj.apagarLinha(linha);
+			obj.guardar(a1);	
+			break;
+		}
+
+	}
+
+}
+
+
 
 void GUI::menuRemocaoF(string valorAtributo){
 	BDFisica bd;
@@ -155,9 +288,11 @@ void GUI::menuRemocaoF(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
 			break;
 		}
 		case 'u':{
+			menuAlterarF(linha);
 			break;
 		}
 		case 'x':{
@@ -177,9 +312,11 @@ void GUI::menuRemocaoJ(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
 			break;
 		}
 		case 'u':{
+			menuAlterarJ(linha);
 			break;
 		}
 		case 'x':{
@@ -199,9 +336,11 @@ void GUI::menuRemocaoA(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
 			break;
 		}
 		case 'u':{
+			menuAlterarA(linha);
 			break;
 		}
 		case 'x':{

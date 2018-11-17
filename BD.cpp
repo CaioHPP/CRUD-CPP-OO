@@ -286,9 +286,7 @@ bool BDFisica::apagarLinha(string linha){
   if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\fisica.txt") != 0){
     perror("Erro ao apagar ficheiro");
   }
-  else{
-    cout << "Ficheiro Apagado com sucesso\n";
-  }
+
   return true;
 }
 
@@ -339,9 +337,7 @@ bool BDJuridica::apagarLinha(string linha){
   if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\juridica.txt")!= 0){
     perror("Erro ao apagar ficheiro");
   }
-  else{
-    cout << "Ficheiro Apagado com sucesso\n";
-  }
+  
   return true;
 }
 
@@ -392,9 +388,7 @@ bool BDAluno::apagarLinha(string linha){
   if(rename("Banco de Dados\\temp.txt", "Banco de Dados\\aluno.txt")!= 0){
     perror("Erro ao apagar ficheiro");
   }
-  else{
-    cout << "Ficheiro Apagado com sucesso\n";
-  }
+ 
   return true;
 }
 

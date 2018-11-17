@@ -57,7 +57,7 @@ void Aluno::setFaculdade(string faculdade){ this->faculdade = faculdade;}
 
 string Aluno::toString(){
   ss.str("");
-  ss << getId() << ";" << getNome() << ";" << getCpf() << ";" << getIdade() << ";" << getFaculdade() << ";" << getCurso();
+  ss << getId() << ";" << getNome() << ";" << getCpf() << ";" << getIdade() << ";" << getCurso() << ";" << getFaculdade();
      // string toString = to_string(id) + ";" + nome + ";" + getCpf() + ";" + to_string(getIdade()) + ";" + curso + ";" + faculdade;
   return ss.str();
 }

@@ -24,6 +24,10 @@ private:
 	void menuRemocaoJ(string valorAtributo);
 	void menuRemocaoA(string valorAtributo);
 
+	void menuAlterarF(string linha);
+	void menuAlterarJ(string linha);
+	void menuAlterarA(string linha);
+
 	string menuAchaLinha(string valorAtributo, string tipo);
 public: 
 	GUI();
