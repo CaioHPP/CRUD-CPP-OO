@@ -1,6 +1,6 @@
-0;Caio;cpfdocaio;20
 1;matheus;cpfdomatheus;12
 2;cpfdoAle;45;45
 3;Caio;cpfdocaio2;56
 4;Caio;cpfdocaio3;20
 6;erick;cpfdoerick;12
+0;Caio;cpfdocaio;19

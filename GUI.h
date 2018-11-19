@@ -2,6 +2,7 @@
 #define GUI_h
 
 #include <string>
+#include <stdio.h>
 
 #include "BD.h"
 #include "Classes.h"

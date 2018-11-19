@@ -5,6 +5,8 @@
 
 
 using namespace std;
+
+
 GUI::GUI(){};
 
 
@@ -288,7 +290,7 @@ void GUI::menuRemocaoF(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
-			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n";
 			break;
 		}
 		case 'u':{
@@ -312,7 +314,7 @@ void GUI::menuRemocaoJ(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
-			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n";
 			break;
 		}
 		case 'u':{
@@ -336,7 +338,7 @@ void GUI::menuRemocaoA(string valorAtributo){
 	switch(obtemEscolha()){
 		case 'r':{
 			bd.apagarLinha(linha);
-			cout << "\n*Ficheiro apagado Com Sucesso!*\n"
+			cout << "\n*Ficheiro apagado Com Sucesso!*\n";
 			break;
 		}
 		case 'u':{
