@@ -1,8 +1,4 @@
-
-
-#include "GUI.h"
-
-
+#include "GUI\\GUI.h"
 
 using namespace std;
 

@@ -1,45 +1,29 @@
-#include "GUI.h"
+#include"Classes\\Pessoa.h"
 
-int main(){
- GUI gui;
- while(1){
 
-  gui.menu();
-  switch(gui.obtemEscolha()){
-   case 'f':
-   {
-    gui.cadF();
-    break;    
-  }
-  case 'j':
-  {
-    gui.cadJ();
-    break;
-  }
-  case 'a':
-  {
-    gui.cadA();
-    break;
-  }
-  case 'v':
-  {
-    gui.showBuscas();
-    break;
-  }
+using namespace std;
 
-  case'x':
-  {
-   return 0;
- }
 
-}
+
+
+Pessoa::Pessoa(){};
+
+
+Pessoa::Pessoa(int id){ 
+	this->id = id;
 }
 
+void Pessoa::setId(int id){
+	this->id = id;
 }
 
+int Pessoa::getId(){ 
+	return id;
+}
 
-
-
-
-
-
+string Pessoa::getNome(){ 
+	return nome;
+}
+void Pessoa::setNome(string nome){ 
+	this->nome = nome;
+}

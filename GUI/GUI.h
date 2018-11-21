@@ -4,8 +4,16 @@
 #include <string>
 #include <stdio.h>
 
-#include "BD.h"
-#include "Classes.h"
+#include "..\\BDClass\\BDFisica.h"
+#include "..\\BDClass\\BDAluno.h"
+#include "..\\BDClass\\BDJuridica.h"
+#include "..\\BDClass\\VerificaRepeticao.h"
+#include "..\\BDClass\\Busca.h"
+#include "..\\BDClass\\SeparaString.h"
+
+#include "..\\Classes\\Fisica.h"
+#include "..\\Classes\\Aluno.h"
+#include "..\\Classes\\Juridica.h"
 
 
 
