@@ -16,7 +16,7 @@ void Juridica::setCnpj(string c){ this->cnpj = c; }
 string Juridica::toString(){
 	stringstream ss;
 	ss.str("");
-	ss << getId() << ";" << getNome() << ";" << getCnpj();
+	ss << getId() << ";" << getCnpj();
 	return ss.str(); 
 }
 

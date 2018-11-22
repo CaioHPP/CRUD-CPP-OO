@@ -1,3 +1,0 @@
-0;EmpresadoCaio;cnpjdocaio
-1;EmpresadoDan;cnpjdodan
-2;Paulo;cnpjdopaulo

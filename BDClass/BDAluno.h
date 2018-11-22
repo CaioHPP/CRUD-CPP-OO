@@ -8,13 +8,15 @@
 #include <stdio.h>
 #include "..\\Classes\\Aluno.h"
 #include "SeparaString.h"
-
+#include "BDFisica.h"
 
 class BDAluno {
 public:
 	bool guardar(Aluno aluno);
-	bool mostrar();
-	bool apagarLinha(string linha);
+	bool buscar(int id, Aluno * aluno);
+	Aluno * buscar(string cpf);
+	bool apagar(Aluno * aluno);
+	bool alterar(Aluno * AlunoNovo, Aluno AlunoAntigo);
 };
 
 

@@ -17,7 +17,7 @@ void Fisica::setIdade(int idade){
 string Fisica::toString(){
 	stringstream ss;
 	ss.str("");
-	ss << getId() << ";" << getNome() << ";" << getCpf() << ";" << getIdade();
+	ss << getId() << ";" << getCpf() << ";" << getIdade();
       //string toString = ss.str() + ";" + nome + ";" + cpf + ";" + ss.str();
 	return ss.str(); 
 }

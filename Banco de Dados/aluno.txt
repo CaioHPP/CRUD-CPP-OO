@@ -1,4 +1,1 @@
-0;Alessandro;cpfdoalessandro;4;cu;cu
-2;Caio;cpfdoestudante;21;UTFPR;Eletrohits2005
-1;Lucio;cpfdolucio;34;engdeProducao;erreiafaculdade
-3;caio;cpft;12;padeiro;Unicesumar
+21;padeiro;UTFPE

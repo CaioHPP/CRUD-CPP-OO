@@ -23,33 +23,31 @@ private:
 	void mostraNomeAtributoParaColetar(string nomeAtributo);
 	string obtemValorAtributoString(string nomeAtributo);
 	int obtemValorAtributoInt(string nomeAtributo);
-	string VerificaDado(int pos ,string valorAtributo, string pessoa);
-	void buscaF();
-	void buscaJ();
-	void buscaA();
-	int MenorId(string pessoa, int j);
 
-	void menuRemocaoF(string valorAtributo);
-	void menuRemocaoJ(string valorAtributo);
-	void menuRemocaoA(string valorAtributo);
+	void buscarF();
+	void buscarJ();
+	void buscarA();
 
-	void menuAlterarF(string linha);
-	void menuAlterarJ(string linha);
-	void menuAlterarA(string linha);
+	string ExisteCpf(string cpf);
+	string ExisteCnpj(string cnpj);
+	int ExisteId(int Id);
 
-	string menuAchaLinha(string valorAtributo, string tipo);
+
+	void menuRemocaoF(Fisica f);
+	void menuRemocaoJ(Juridica j);
+	void menuRemocaoA(Aluno a);
+
+	void menuAlterarF(Fisica f);
+	void menuAlterarJ(Juridica j);
+	void menuAlterarA(Aluno a);
+
 public: 
 	GUI();
 	void menu();
-
 	char obtemEscolha();
-
 	void cadF();
 	void cadJ();
 	void cadA();
-
-	void showAll();
-
 	void showBuscas();
 
 

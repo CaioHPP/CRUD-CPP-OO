@@ -1,9 +1,3 @@
-2;cpfdoAle;45;45
-3;Caio;cpfdocaio2;56
-4;Caio;cpfdocaio3;20
-6;erick;cpfdoerick;12
-0;Caio;cpfdocaio;19
-7;caio;456;2
-5;Matheus;123;5
-1;matheus;cpfdomatheus;21
-8;Caio;789;78
+1;123;23
+2;5;21
+21;4;20
