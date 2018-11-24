@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include "Classes\\Aluno.h"
 
 
@@ -19,6 +26,5 @@ string Aluno::toString(){
 	stringstream ss;
 	ss.str("");
 	ss << getId() << ";" << getCurso() << ";" << getFaculdade();
-     // string toString = to_string(id) + ";" + nome + ";" + getCpf() + ";" + to_string(getIdade()) + ";" + curso + ";" + faculdade;
 	return ss.str();
 }

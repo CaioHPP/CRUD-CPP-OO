@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include "BDClass\\BDPessoa.h"
 
 
@@ -8,14 +15,14 @@ using namespace std;
 
 
 
-  bool BDPessoa::guardar(Pessoa pessoa){
-   ofstream arquivo;
-   arquivo.open(caminhoF, ios::app);
-   arquivo<<pessoa.getId()<<";"<<pessoa.getNome()<<endl;
-   return true;
- }
+bool BDPessoa::guardar(Pessoa pessoa){
+ ofstream arquivo;
+ arquivo.open(caminhoF, ios::app);
+ arquivo<<pessoa.getId()<<";"<<pessoa.getNome()<<endl;
+ return true;
+}
 
- bool BDPessoa::buscar(int id, Pessoa * p){
+bool BDPessoa::buscar(int id, Pessoa * p){
   string line;
   ifstream arquivo (caminhoF);
   if (arquivo.is_open()){
@@ -38,6 +45,38 @@ using namespace std;
   return false;
 }
 
+
+Pessoa ** BDPessoa::buscarN(string nome, int  *retornoRegistroEncontrados){
+  Pessoa ** pessoas = new Pessoa*[1];
+  string line;
+  ifstream arquivo(caminhoF);
+  if (arquivo.is_open()){
+    SeparaString linha;
+    string linhasplitada[2];
+    while (getline(arquivo,line)){
+      linha.splitter(line, linhasplitada);
+      if(linhasplitada[1] == nome){
+        pessoas[*retornoRegistroEncontrados] = new Pessoa();
+        Pessoa * p = new Pessoa();
+        p->setId(stoi(linhasplitada[0]));
+        p->setNome(nome);
+        pessoas[*retornoRegistroEncontrados] = p;
+        *retornoRegistroEncontrados += 1;     
+
+      }       
+    }
+    arquivo.close();
+    if(*retornoRegistroEncontrados>0){
+      return pessoas;
+    }else{
+      return NULL;
+    }
+  }
+  else {
+    cout << "";
+  }
+  return NULL;
+}
 
 Pessoa * BDPessoa::buscar(int id){
   Pessoa *p = new Pessoa();
@@ -82,11 +121,4 @@ bool BDPessoa::alterar(Pessoa * PessoaNova, Pessoa PessoaAntiga){
   }else{
     return false;
   }
-  }
-  
-
-
-
-
-
-
+}

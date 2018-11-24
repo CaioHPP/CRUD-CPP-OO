@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #ifndef BDSplitter_H
 #define BDSplitter_H
 
@@ -13,10 +20,6 @@ class SeparaString{
 
 public:
 	void splitter(string linha, string linhasplitada[]);
-
-	void aluno(string line);
-	void fisica(string line);
-	void juridica(string line);
 };
 
 

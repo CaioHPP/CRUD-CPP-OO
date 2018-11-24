@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #ifndef GUI_h
 #define GUI_h
 
@@ -7,15 +14,10 @@
 #include "..\\BDClass\\BDFisica.h"
 #include "..\\BDClass\\BDAluno.h"
 #include "..\\BDClass\\BDJuridica.h"
-#include "..\\BDClass\\VerificaRepeticao.h"
-#include "..\\BDClass\\Busca.h"
-#include "..\\BDClass\\SeparaString.h"
 
 #include "..\\Classes\\Fisica.h"
 #include "..\\Classes\\Aluno.h"
 #include "..\\Classes\\Juridica.h"
-
-
 
 using namespace std;
 class GUI{
@@ -32,7 +34,6 @@ private:
 	string ExisteCnpj(string cnpj);
 	int ExisteId(int Id);
 
-
 	void menuRemocaoF(Fisica f);
 	void menuRemocaoJ(Juridica j);
 	void menuRemocaoA(Aluno a);
@@ -41,6 +42,9 @@ private:
 	void menuAlterarJ(Juridica j);
 	void menuAlterarA(Aluno a);
 
+	void MostraDadosF(Fisica * f);
+	void MostraDadosJ(Juridica * j);
+	void MostraDadosA(Aluno * a);
 public: 
 	GUI();
 	void menu();
@@ -49,13 +53,6 @@ public:
 	void cadJ();
 	void cadA();
 	void showBuscas();
-
-
-
-
 };
 
-
-
 #endif
-

@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include"BDClass\\BDjuridica.h"
 
 #define caminhoF "Banco de Dados\\juridica.txt" //caminho Juridica.txt
@@ -58,6 +65,31 @@ bool BDJuridica::buscar(int id, Juridica * j){
 	}
 	return false;
 }
+
+Juridica ** BDJuridica::buscarN(string nome, int *qtde){
+	BDPessoa bdp;
+	int achouJ = 0;
+	Pessoa ** p = bdp.buscarN(nome, qtde);
+	Juridica **j = new Juridica*[*qtde];
+	if(p != NULL){
+		for(int i = 0; i < *qtde;i++){
+			Juridica * juridica = new Juridica();
+			juridica = buscar(p[i]->getId());
+			j[i]=new Juridica();
+			j[i] = juridica;
+			if(j[i]!= NULL){
+				achouJ++;
+			}
+		}
+		if(achouJ>0){
+			return j;
+		}
+		return NULL;
+	}else{
+		return NULL;
+	}
+}
+
 
 Juridica * BDJuridica::buscar(string cnpj){
 	Juridica *j = new Juridica();

@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include "Classes\\Fisica.h"
 
 
@@ -18,7 +25,6 @@ string Fisica::toString(){
 	stringstream ss;
 	ss.str("");
 	ss << getId() << ";" << getCpf() << ";" << getIdade();
-      //string toString = ss.str() + ";" + nome + ";" + cpf + ";" + ss.str();
 	return ss.str(); 
 }
 

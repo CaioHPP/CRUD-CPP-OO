@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include "GUI\\GUI.h"
 
 using namespace std;
@@ -13,7 +20,7 @@ void GUI::mostraNomeAtributoParaColetar(string nomeAtributo){
 string GUI::obtemValorAtributoString(string nomeAtributo){
 	mostraNomeAtributoParaColetar(nomeAtributo);
 	string aux;
-	cin >> aux;
+	getline(cin>>ws, aux);
 	return aux;
 }
 int GUI::obtemValorAtributoInt(string nomeAtributo){
@@ -73,7 +80,30 @@ int GUI::ExisteId(int id){
 	}else{
 		return ExisteId(obtemValorAtributoInt("Insira outro ID"));
 	}
-	}
+}
+
+void GUI::MostraDadosF(Fisica * f){
+	cout << "\nID: " << f->getId() << endl;
+	cout << "Nome: " << f->getNome() << endl;
+	cout << "Idade: " << f->getIdade() << endl;
+	cout << "Cpf: " << f->getCpf() << endl;
+
+}
+
+void GUI::MostraDadosJ(Juridica * j){
+	cout << "\nID: " << j->getId() << endl;
+	cout << "Nome: " << j->getNome() << endl;
+	cout << "Cnpj: " << j->getCnpj() << endl;
+}
+
+void GUI::MostraDadosA(Aluno * a){
+	cout << "\nID: " << a->getId() << endl;
+	cout << "Nome: " << a->getNome() << endl;
+	cout << "Cpf: " << a->getCpf() << endl;
+	cout << "Idade: " << a->getIdade() << endl;
+	cout << "Faculdade: " << a->getFaculdade() << endl;
+	cout << "Curso: " << a->getCurso() << endl;
+}
 
 
 
@@ -87,6 +117,7 @@ void GUI::cadF(){
 	f1.setCpf(ExisteCpf(obtemValorAtributoString("Cpf")));
 	BDFisica obj;
 	obj.guardar(f1);
+	cout<<"Cadastro efetuado com sucesso";
 
 }
 void GUI::cadJ(){
@@ -99,7 +130,7 @@ void GUI::cadJ(){
 
 	BDJuridica obj;
 	obj.guardar(j1);
-
+	cout<<"Cadastro efetuado com sucesso";
 
 
 }
@@ -115,10 +146,11 @@ void GUI::cadA(){
 
 	BDAluno obj;
 	obj.guardar(a1);
+	cout<<"Cadastro efetuado com sucesso";
 }
 
 void GUI::menuAlterarF(Fisica fAntiga){
-	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\t";
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\tx.Sair\n\t";
 	Fisica * f1 = new Fisica();
 	BDFisica obj;
 	f1 = obj.buscar(fAntiga.getCpf());
@@ -129,6 +161,7 @@ void GUI::menuAlterarF(Fisica fAntiga){
 			f1->setIdade(fAntiga.getIdade());
 			f1->setCpf(fAntiga.getCpf());
 			obj.alterar(f1, fAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 2:{
@@ -137,6 +170,7 @@ void GUI::menuAlterarF(Fisica fAntiga){
 			f1->setIdade(fAntiga.getIdade());
 			f1->setCpf(ExisteCpf(obtemValorAtributoString("CPF")));
 			obj.alterar(f1, fAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 3:{
@@ -145,6 +179,7 @@ void GUI::menuAlterarF(Fisica fAntiga){
 			f1->setIdade(obtemValorAtributoInt("Nova Idade"));
 			f1->setCpf(fAntiga.getCpf());
 			obj.alterar(f1, fAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 	}
@@ -152,7 +187,7 @@ void GUI::menuAlterarF(Fisica fAntiga){
 }
 
 void GUI::menuAlterarJ(Juridica jAntiga){
-	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CNPJ\n\t";
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CNPJ\n\tx.Sair\n\t";
 	Juridica * j1;
 	BDJuridica obj;
 	j1 = obj.buscar(jAntiga.getCnpj());
@@ -162,6 +197,7 @@ void GUI::menuAlterarJ(Juridica jAntiga){
 			j1->setNome(obtemValorAtributoString("Novo Nome"));
 			j1->setCnpj(jAntiga.getCnpj());
 			obj.alterar(j1, jAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 2:{
@@ -169,6 +205,7 @@ void GUI::menuAlterarJ(Juridica jAntiga){
 			j1->setNome(jAntiga.getNome());
 			j1->setCnpj(ExisteCnpj(obtemValorAtributoString("CNPJ")));
 			obj.alterar(j1, jAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		
@@ -177,7 +214,7 @@ void GUI::menuAlterarJ(Juridica jAntiga){
 }
 
 void GUI::menuAlterarA(Aluno aAntiga){
-	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\t4.Curso\n\t5.Faculdade";
+	cout<<"\nQual Informacao deseja alterar? \n\t1.Nome\n\t2.CPF\n\t3.Idade\n\t4.Curso\n\t5.Faculdades\n\tx.Sair\n\t";
 	Aluno * a1;
 	BDAluno obj;
 	a1 = obj.buscar(aAntiga.getCpf());
@@ -190,6 +227,7 @@ void GUI::menuAlterarA(Aluno aAntiga){
 			a1->setFaculdade(aAntiga.getFaculdade());
 			a1->setCurso(aAntiga.getCurso());
 			obj.alterar(a1, aAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 2:{
@@ -200,6 +238,7 @@ void GUI::menuAlterarA(Aluno aAntiga){
 			a1->setFaculdade(aAntiga.getFaculdade());
 			a1->setCurso(aAntiga.getCurso());
 			obj.alterar(a1, aAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 3:{
@@ -210,6 +249,7 @@ void GUI::menuAlterarA(Aluno aAntiga){
 			a1->setFaculdade(aAntiga.getFaculdade());
 			a1->setCurso(aAntiga.getCurso());
 			obj.alterar(a1, aAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 4:{
@@ -220,6 +260,7 @@ void GUI::menuAlterarA(Aluno aAntiga){
 			a1->setCurso(obtemValorAtributoString("Nova Curso"));
 			a1->setFaculdade(aAntiga.getFaculdade());
 			obj.alterar(a1, aAntiga);
+			cout<<"Alteracao efetuada com sucesso";
 			break;
 		}
 		case 5:{
@@ -230,6 +271,10 @@ void GUI::menuAlterarA(Aluno aAntiga){
 			a1->setCurso(aAntiga.getCurso());
 			a1->setFaculdade(obtemValorAtributoString("Nova Faculdade"));
 			obj.alterar(a1, aAntiga);
+			cout<<"Alteracao efetuada com sucesso";
+			break;
+		}
+		default:{
 			break;
 		}
 
@@ -241,13 +286,20 @@ void GUI::menuAlterarA(Aluno aAntiga){
 
 void GUI::menuRemocaoF(Fisica f){
 	BDFisica bd;
+	BDAluno bda;
 	cout << "\n==========================\n";
 	cout << "Para: \n\t remover cadastro - r \n\t alterar cadastro - u \n\t voltar ao menu - x";
 	cout << "\n==========================\n";
 
 	switch(obtemEscolha()){
 		case 'r':{
-			bd.apagar(&f);
+			Aluno * a = new Aluno();
+			a = bda.buscar(f.getCpf());
+			if(a!=NULL){
+				bda.apagar(a);
+			}else{
+				bd.apagar(&f);	
+			}
 			cout << "\n*Ficheiro apagado Com Sucesso!*\n";
 			break;
 		}
@@ -302,6 +354,7 @@ void GUI::menuRemocaoA(Aluno a){
 		}
 		case 'u':{
 			menuAlterarA(a);
+
 			break;
 		}
 		case 'x':{
@@ -312,25 +365,34 @@ void GUI::menuRemocaoA(Aluno a){
 }
 
 void GUI::buscarF(){
-	Busca busca;
 	BDFisica dbf;
-
 	cout << "Deseja buscar atraves do nome(n) ou cpf(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			string cpf = obtemValorAtributoString("CPF");
-			Fisica * f = dbf.buscar(cpf);
+			Fisica * f = dbf.buscar(obtemValorAtributoString("CPF"));
 			if (f!=NULL){	
-				cout << "\nID: " << f->getId() << endl;
-				cout << "Nome: " << f->getNome() << endl;
-				cout << "Cpf: " << f->getCpf() << endl;
-				cout << "Idade: " << f->getIdade() << endl;
+				MostraDadosF(f);
 				menuRemocaoF(*f);
+			}else{
+				cout << "\nNenhuma pessoa fisica com este cpf foi encontrado...\n";
 			}
 			break;
 		}
 		case 'n':{
-			busca.buscaNomeF(obtemValorAtributoString("Nome"));
+			int qtde = 0;
+			Fisica ** f = dbf.buscarN(obtemValorAtributoString("Nome"), &qtde);
+			if(f!=NULL){
+				for(int i = 0; i < qtde; i++){
+					if(f[i]!=NULL){
+						MostraDadosF(f[i]);	
+						free(f[i]);
+					}
+				}
+				free(f);
+			}else{
+				cout << "\nNenhuma pessoa fisica com este nome foi encontrado...\n";
+				free(f);
+			}
 			break;
 		}
 		default:{
@@ -342,24 +404,36 @@ void GUI::buscarF(){
 }
 
 void GUI::buscarJ(){
-	Busca busca;
 	BDJuridica dbj;
 	cout << "Deseja buscar atraves do nome(n) ou CNPJ(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			string cnpj = obtemValorAtributoString("CPF");
-			Juridica * j = dbj.buscar(cnpj);
+			Juridica * j = dbj.buscar(obtemValorAtributoString("CNPJ"));
 			if (j!=NULL){
-				cout << "\nID: " << j->getId() << endl;
-				cout << "Nome: " << j->getNome() << endl;
-				cout << "Cnpj: " << j->getCnpj() << endl;
+				MostraDadosJ(j);
 				menuRemocaoJ(*j);
+			}else{
+				cout << "\nNenhuma pessoa juridica com este cnpj foi encontrado...\n";
 			}
 			break;
 		}
 		case 'n':{
-			busca.buscaNomeJ(obtemValorAtributoString("Nome"));
-			break;
+			int qtde = 0;
+			Juridica ** j = dbj.buscarN(obtemValorAtributoString("Nome"), &qtde);
+			if(j!=NULL){
+				for(int i = 0; i < qtde; i++){
+					if(j[i]!=NULL){
+						MostraDadosJ(j[i]);	
+						free(j[i]);
+					}
+				}
+				free(j);
+				break;
+			}else{
+				cout << "\nNenhuma pessoa juridica com este nome foi encontrado...\n";
+				free(j);
+				break;
+			}
 		}
 		default:{
 			cout << "Erro";
@@ -369,26 +443,34 @@ void GUI::buscarJ(){
 }
 
 void GUI::buscarA(){
-	Busca busca;
 	BDAluno dba;
 	cout << "Deseja buscar atraves do nome(n) ou cpf(c)? \n";
 	switch(obtemEscolha()){
 		case 'c':{
-			string cpf = obtemValorAtributoString("CPF");
-			Aluno * a = dba.buscar(cpf);
+			Aluno * a = dba.buscar(obtemValorAtributoString("CPF"));
 			if (a!=NULL){
-				cout << "\nID: " << a->getId() << endl;
-				cout << "Nome: " << a->getNome() << endl;
-				cout << "Cpf: " << a->getCpf() << endl;
-				cout << "Idade: " << a->getIdade() << endl;
-				cout << "Faculdade: " << a->getFaculdade() << endl;
-				cout << "Curso: " << a->getCurso() << endl;
+				MostraDadosA(a);
 				menuRemocaoA(*a);
+			}else{
+				cout << "\nNenhum aluno com este cpf foi encontrado...\n";
 			}
 			break;
 		}
 		case 'n':{
-			busca.buscaNomeA(obtemValorAtributoString("Nome"));
+			int qtde = 0;
+			Aluno ** a = dba.buscarN(obtemValorAtributoString("Nome"), &qtde);
+			if(a!=NULL){
+				for(int i = 0; i < qtde; i++){
+					if(a[i]!=NULL){
+						MostraDadosA(a[i]);	
+						free(a[i]);
+					}
+				}
+				free(a);
+			}else{
+				cout << "\nNenhum aluno com este nome foi encontrado...\n";
+				free(a);
+			}
 			break;
 		}
 		default:{

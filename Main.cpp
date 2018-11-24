@@ -1,3 +1,12 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
++-1670 linhas
+
+*/
 #include "GUI\\GUI.h"
 
 int main(){
@@ -36,10 +45,3 @@ int main(){
 }
 
 }
-
-
-
-
-
-
-

@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #ifndef BDPessoa_H
 #define BDPessoa_H
 
@@ -20,6 +27,8 @@ public:
 	Pessoa * buscar(int id);
 	bool apagar(Pessoa * pessoa);
 	bool alterar(Pessoa * PessoaNova, Pessoa PessoaAntiga);
+	Pessoa ** buscarN(string nome, int *retornoRegistroEncontrados);
+
 };
 
 #endif

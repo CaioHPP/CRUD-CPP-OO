@@ -1,3 +1,10 @@
+/*
+APS DE PROG
+ALUNO: CAIO HENRIQUE PEDROSO PEDRO
+RA:1602950
+ENGENHARIA ELETRÔNICA
+PROF: LUCIO VALENTIN 
+*/
 #include "BDClass\\BDFisica.h"
 
 
@@ -75,7 +82,33 @@ Fisica * BDFisica::buscar(string cpf){
 	}else{
 		return NULL;
 	}
+}
 
+Fisica ** BDFisica::buscarN(string nome, int *qtde){
+	BDPessoa bdp;
+	int achouF = 0;
+	Pessoa ** p = bdp.buscarN(nome, qtde);
+	Fisica ** fisicas = new Fisica*[*qtde];
+
+	if(p != NULL){
+		
+		for(int i = 0; i < *qtde;i++){
+			Fisica *f = new Fisica();
+			f = buscar(p[i]->getId());
+			fisicas[i] = new Fisica();
+			fisicas[i]=f;
+			if(fisicas[i] != NULL){
+				achouF++;
+			}
+		}
+		if(achouF>0){
+			return fisicas;
+		}
+		
+		return NULL;
+	}else{
+		return NULL;
+	}
 }
 
 Fisica * BDFisica::buscar(int id){
