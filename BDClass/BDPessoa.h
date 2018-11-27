@@ -20,7 +20,10 @@ using namespace std;
 
 
 class BDPessoa {
+private:
+	int obtemId();
 public:
+	
 	bool guardar(Pessoa pessoa);
 
 	bool buscar(int id, Pessoa * pessoa);

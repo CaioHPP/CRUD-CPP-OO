@@ -14,6 +14,9 @@ PROF: LUCIO VALENTIN
 bool BDJuridica::guardar(Juridica juridica){
 	BDPessoa dbp;
 	Pessoa * p;
+	if(juridica.getId() == 0){
+		juridica.setId(dbp.obtemId());
+	}
 	p->setId(juridica.getId());
 	p->setNome(juridica.getNome());
 	dbp.guardar(*p);

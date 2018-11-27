@@ -9,10 +9,12 @@ using namespace std;
 
 class Pessoa{
 protected:
+	static int idcount;
 	int id;
 	string nome;
 
 public:
+	proximoId();
 	Pessoa(int id);
 	Pessoa();
 	int getId();

@@ -7,11 +7,36 @@ PROF: LUCIO VALENTIN
 */
 #include "BDClass\\BDPessoa.h"
 
-
+#define caminhoid "Banco de Dados\\IDCount.txt" //caminho Fisica.txt
 #define caminhoF "Banco de Dados\\pessoa.txt" //caminho Fisica.txt
 #define caminhoT "Banco de Dados\\temp.txt" //caminho Temp.txt
 
 using namespace std;
+
+int BDPessoa::obtemId(){
+  int id =0;
+  string line;
+  ifstream arquivo (caminhoid);
+  if (arquivo.is_open()){
+    while ( getline (arquivo,line)){
+      id = stoi(line)+1;
+    }
+    arquivo.close();
+    remove(caminhoid);
+    ofstream arquivo;
+    arquivo.open(caminhoid, ios::app);
+    arquivo<<id<<endl;
+    return id;
+  }
+  else {
+    ofstream arquivo;
+    arquivo.open(caminhoid, ios::app);
+    arquivo<<1<<endl;
+    return 1;
+  }
+
+}
+
 
 
 

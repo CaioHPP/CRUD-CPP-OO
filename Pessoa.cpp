@@ -15,7 +15,10 @@ using namespace std;
 
 Pessoa::Pessoa(){};
 
-
+Pessoa::proximoId(){
+	idcount++;
+	return idcount;
+}
 Pessoa::Pessoa(int id){ 
 	this->id = id;
 }
@@ -34,3 +37,5 @@ string Pessoa::getNome(){
 void Pessoa::setNome(string nome){ 
 	this->nome = nome;
 }
+
+int Pessoa::idcount = 0;

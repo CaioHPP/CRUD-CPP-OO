@@ -14,6 +14,10 @@ PROF: LUCIO VALENTIN
 bool BDAluno::guardar(Aluno aluno){
   BDFisica bdf;
   Fisica * f1;
+  if(aluno.getId() == 0){
+    BDPessoa dbp;
+    aluno.setId(dbp.obtemId());
+  }
   f1->setId(aluno.getId());
   f1->setNome(aluno.getNome());
   f1->setCpf(aluno.getCpf());
@@ -79,15 +83,12 @@ Aluno ** BDAluno::buscarN(string nome, int * qtde){
   if(f != NULL){
     for(int i = 0; i < *qtde;i++){
       alunos[i]=new Aluno();
-      cout<< "1";
       if(f[i]!=NULL){
         if(buscar(f[i]->getId(), alunos[i])){
-          cout<< "2";
           alunos[i]->setId(f[i]->getId());
           alunos[i]->setNome(f[i]->getNome());
           alunos[i]->setCpf(f[i]->getCpf());
           alunos[i]->setIdade(f[i]->getIdade());
-          cout<< "3\n";
           achouA++; 
         }else{
           alunos[i]=NULL;
@@ -97,7 +98,6 @@ Aluno ** BDAluno::buscarN(string nome, int * qtde){
       }
 
     }
-    cout << achouA;
     if(achouA>0){
       return alunos;
 

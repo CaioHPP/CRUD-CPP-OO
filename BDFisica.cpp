@@ -15,6 +15,9 @@ PROF: LUCIO VALENTIN
 bool BDFisica::guardar(Fisica fisica){
 	BDPessoa dbp;
 	Pessoa * p;
+	if(fisica.getId() == 0){
+		fisica.setId(dbp.obtemId());
+	}
 	p->setId(fisica.getId());
 	p->setNome(fisica.getNome());
 	dbp.guardar(*p);

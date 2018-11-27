@@ -109,9 +109,9 @@ void GUI::MostraDadosA(Aluno * a){
 
 
 void GUI::cadF(){
-	Fisica f1;
+	Fisica f1 = Fisica(0);
 
-	f1.setId(ExisteId(obtemValorAtributoInt("ID")));
+	//f1.setId(ExisteId(obtemValorAtributoInt("ID")));
 	f1.setNome(obtemValorAtributoString("Nome completo"));
 	f1.setIdade(obtemValorAtributoInt("Idade"));
 	f1.setCpf(ExisteCpf(obtemValorAtributoString("Cpf")));
@@ -121,11 +121,11 @@ void GUI::cadF(){
 
 }
 void GUI::cadJ(){
-	Juridica j1;
+	Juridica j1 = Juridica(0);
 
-	j1.setId(ExisteId(obtemValorAtributoInt("ID")));
+	//j1.setId(ExisteId(obtemValorAtributoInt("ID")));
 	j1.setNome(obtemValorAtributoString("Nome"));
-	j1.setCnpj(ExisteCpf(obtemValorAtributoString("CNPJ")));
+	j1.setCnpj(ExisteCnpj(obtemValorAtributoString("CNPJ")));
 
 
 	BDJuridica obj;
@@ -135,9 +135,9 @@ void GUI::cadJ(){
 
 }
 void GUI::cadA(){
-	Aluno a1;
+	Aluno a1 = Aluno(0);
 
-	a1.setId(ExisteId(obtemValorAtributoInt("ID")));
+	//a1.setId(ExisteId(obtemValorAtributoInt("ID")));
 	a1.setNome(obtemValorAtributoString("Nome completo"));
 	a1.setIdade(obtemValorAtributoInt("Idade"));
 	a1.setCpf(ExisteCpf(obtemValorAtributoString("Cpf")));
